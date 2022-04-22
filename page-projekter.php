@@ -49,7 +49,7 @@ get_header(); ?>
     const url = "http://perfpics.dk/kea/2_sem/09_cms/unesco_wp/wp-json/wp/v2/projekt?per_page=100"; 
 
     /* Herunder har vi lavet en konstant med navnet 'url', som repræsenterer vores link som i næste led bruges til at fetche dataerne ind */
-    const catUrl = "http://perfpics.dk/kea/2_sem/09_cms/unesco_wp/wp-json/wp/v2/categories"; 
+    const catUrl = "http://perfpics.dk/kea/2_sem/09_cms/unesco_wp/wp-json/wp/v2/categories?per_page=100"; 
     
     /* Herunder kører vi den funktion som henter vores data ind (både vores custom field data, og vores kategorier), for at tjekke at indhentingen fungerer, console logger vi og tjekker der, før vi fortsætter */
     async function hentData() {
