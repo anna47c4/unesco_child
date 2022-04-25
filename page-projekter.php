@@ -20,7 +20,7 @@ get_header(); ?>
 <!-- Nedenfor her har vi lavet en skabelon (template), som vores data fra pods' skal klones ind i  -->
 
  <template>
-    <article class="projekt">
+    <article id="projekt">
         <h3></h3>
 		 <img class="pic" src="" alt="" />
         <p class="trin"></p>
@@ -43,6 +43,7 @@ get_header(); ?>
   /*   Herunder har vi oprettet variable, som vi skal bruge igennem koden  */
     let projekter; 
     let categories; 
+    let proId; // test 
     let filterProjekt = "alle"; //default værdi vi har givet så alle vises inden klik på specifik
 
     /* Herunder har vi lavet en konstant med navnet 'url', som repræsenterer vores link som i næste led bruges til at fetche dataerne ind */
@@ -50,20 +51,27 @@ get_header(); ?>
 
     /* Herunder har vi lavet en konstant med navnet 'url', som repræsenterer vores link som i næste led bruges til at fetche dataerne ind */
     const catUrl = "http://perfpics.dk/kea/2_sem/09_cms/unesco_wp/wp-json/wp/v2/categories?per_page=100"; 
+
+    //test 
+  /*   const idUrl = "http://perfpics.dk/kea/2_sem/09_cms/unesco_wp/wp-json/wp/v2/projekt/" */
     
     /* Herunder kører vi den funktion som henter vores data ind (både vores custom field data, og vores kategorier), for at tjekke at indhentingen fungerer, console logger vi og tjekker der, før vi fortsætter */
     async function hentData() {
         const respons = await fetch(url);
         const catRespons = await fetch(catUrl); 
+       /*  const idRespons = await fetch(idUrl); BRUGT TIL AT TESTE NOGET  */
 
         projekter = await respons.json(); 
         categories = await catRespons.json(); 
+       /*  proId = await idRespons.json(); BRUGT TIL AT TESTE NOGET */
         console.log(projekter); 
       /*   Herunder kalder vi den funktion som skal hjælpe os med at vise dataen på siden  */
         visData(); 
         
         /* Herunder kalder vi en ny funktion, nemlig den funktion vi bruger til at få oprettet vores filtreringsknapper */
         opretKnapper(); 
+
+         styleProjekter(); 
     }
     
    /*  I nedstående funktion sørger vi med 'forEach', og ved brug af ID for at der oprettes en knap for hver kategori der er lavet */
@@ -79,7 +87,23 @@ get_header(); ?>
             elm.addEventListener("click", filtrering) //efter der er klikket på en kategori, kalder vi funktionen filtrering
         })
     }
-    
+
+/*    //test herunder
+    function styleProjekter() {
+     projekter.forEach(projekt => {
+      document.querySelector("#projekt").setAttribute('class', projekt.id) 
+     })
+    }  */
+/* 
+    function styleProjekter() {
+      document.querySelector("#projekt").forEach(elm => {
+        elm.setAttribute('class', projekt.id) 
+      })
+    } Lortet virker ikkeeeeee*/
+
+  
+  
+  
     function filtrering(){
      filterProjekt = this.dataset.projekt; //her gør vi det klart at der skal filtreres på det der er klikket på ved brug af 'this'
      console.log(filterProjekt); 
@@ -101,7 +125,7 @@ get_header(); ?>
             klon.querySelector(".trin").textContent = projekt.trin; 
             klon.querySelector(".korttekst").textContent = projekt.korttekst; 
             /* Herunder gør vi artiklerne klikbare, og sender videre til det enkelte projekts side, som vi har skabt inde i single-projekt */
-            klon.querySelector(".projekt").addEventListener("click", ()=> {location.href = projekt.link;})
+            klon.querySelector("#projekt").addEventListener("click", ()=> {location.href = projekt.link;})
 
           /*   Til slut herunder tilføjer vi alle vores kloninger til vores container  */
             container.appendChild(klon);}
@@ -266,6 +290,10 @@ get_header(); ?>
   background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal17.png); 
   background-size: cover; 
   color: rgba(255, 255, 255, 0); 
+}
+
+article.pro100 {
+  background-color: green; 
 }
 
 </style>
