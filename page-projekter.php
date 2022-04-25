@@ -58,7 +58,7 @@ get_header(); ?>
 
         projekter = await respons.json(); 
         categories = await catRespons.json(); 
-        console.log(categories); 
+        console.log(projekter); 
       /*   Herunder kalder vi den funktion som skal hjælpe os med at vise dataen på siden  */
         visData(); 
         
@@ -120,6 +120,7 @@ get_header(); ?>
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 8px;
 }
+
 
 /* kategori-knappernes styling herunder:  */
 
