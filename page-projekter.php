@@ -31,7 +31,7 @@ get_header(); ?>
 <section id="primary" class="content-area"></section><!-- #primary -->
 <main id="main" class="site-main">
  <!-- Herunder opretter vi et nav-element som vi kan bruge til vores filtrering af projekterne   --> 
-<nav id="filtrering"><button data-projekt="alle">Alle</button></nav>
+<nav id="filtrering"><button class="alle" data-projekt="alle">Alle</button></nav>
 <!-- Her opretter vi en 'tom' section, som vi senere bruger til at klone vores indhold (data) ind i  -->
 <section class="data-container"></section>	
 
@@ -69,7 +69,7 @@ get_header(); ?>
    /*  I nedstående funktion sørger vi med 'forEach', og ved brug af ID for at der oprettes en knap for hver kategori der er lavet */
     function opretKnapper(){
         categories.forEach(cat => {
-            document.querySelector("#filtrering").innerHTML += `<button class="filter" data-projekt="${cat.id}">${cat.name}</button>`
+            document.querySelector("#filtrering").innerHTML += `<button class="filter cat${cat.id}" data-projekt="${cat.id}">${cat.name}</button>`
         })
         kaldKnapper(); //her kalder vi knapperne, og med det menes der at vi 'aktiverer' knapperne, ved at tilføje eventlistener der gør dem klikbare
     }
@@ -117,6 +117,183 @@ get_header(); ?>
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 8px;
+}
+
+/* kategori-knappernes styling herunder:  */
+
+
+
+.alle {
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/alle.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+  color:  rgba(255, 255, 255, 0); 
+}
+
+.alle:hover {
+  color: rgba(255, 255, 255, 0); 
+}
+
+
+.filter.cat4 /* - afskaf fattigdom  */{
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal01.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+  color: rgba(255, 255, 255, 0); 
+}
+
+.filter.cat19  /* - anstændige jobs og økonomisk vækst  */ {
+ background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal02.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+   color:  rgba(255, 255, 255, 0); 
+}
+
+.filter.cat27  /* - ansvarligt forbrug og produktion  */ {
+ background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal03.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+   color:  rgba(255, 255, 255, 0); 
+}
+
+.filter.cat17  /* - bæredygtig energi  */ {
+   background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal04.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+   color:  rgba(255, 255, 255, 0); 
+
+}
+
+.filter.cat25 /* - bæredygtige byer og lokalsamfund  */ {
+   background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal05.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+   color:  rgba(255, 255, 255, 0); 
+
+}
+
+.filter.cat36 /* - fred, retæfridghed og stærke institutioner  */ {
+   background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal06.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+   color:  rgba(255, 255, 255, 0); 
+
+}
+
+.filter.cat21  /* - industri innovation og infrastruktur  */ {
+   background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal07.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+   color:  rgba(255, 255, 255, 0); 
+
+}
+
+.filter.cat29  /* - klimaindsats  */ {
+   background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal08.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+   color:  rgba(255, 255, 255, 0); 
+
+}
+
+.filter.cat11 /* - kvalitetsuddannelse  */ {
+   background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal09.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+   color:  rgba(255, 255, 255, 0); 
+
+}
+
+.filter.cat13 /* - ligestilling mellem kønnene  */ {
+   background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal10.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+ color:  rgba(255, 255, 255, 0); 
+}
+
+.filter.cat31 /* - Livet i havet  */ {
+   background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal11.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+ color:  rgba(255, 255, 255, 0); 
+}
+
+.filter.cat34 /* - Livet på land  */ {
+   background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal12.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+ color:  rgba(255, 255, 255, 0); 
+}
+
+.filter.cat23 /* - Mindre ulighed  */ {
+   background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal13.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+ color:  rgba(255, 255, 255, 0); 
+}
+
+.filter.cat38 /* - Partnerskaber for handling  */ {
+   background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal14.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+ color:  rgba(255, 255, 255, 0); 
+}
+
+.filter.cat15 /* - Rent vand og sanitet  */ {
+   background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal15.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+ color:  rgba(255, 255, 255, 0); 
+}
+
+.filter.cat6 /* - Stop sult  */ {
+   background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal16.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+ color:  rgba(255, 255, 255, 0); 
+}
+
+.filter.cat8 /* - Sundhed og trivsel  */ {
+   background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal17.png); 
+  background-size: cover; 
+  border: 0; 
+  height: 150px; 
+  width: 150px; 
+ color:  rgba(255, 255, 255, 0); 
 }
 
 </style>
