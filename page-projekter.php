@@ -20,10 +20,9 @@ get_header(); ?>
 <!-- Nedenfor her har vi lavet en skabelon (template), som vores data fra pods' skal klones ind i  -->
 
  <template>
-    <article id="projekt">
-      	 <img class="pic" src="" alt="" />
+    <article class="projekt">
+      	 <img class="pic" src="" alt="projekter" /> 
         <h3></h3>
-	
         <p class="trin"></p>
 		<p class="korttekst"></p>
     </article>
@@ -68,9 +67,7 @@ get_header(); ?>
         visData(); 
         
         /* Herunder kalder vi en ny funktion, nemlig den funktion vi bruger til at få oprettet vores filtreringsknapper */
-        opretKnapper(); 
-
-        styleProjekter(); 
+        opretKnapper();     
     }
     
    /*  I nedstående funktion sørger vi med 'forEach', og ved brug af ID for at der oprettes en knap for hver kategori der er lavet */
@@ -106,10 +103,6 @@ let trin = projekt.trin;
         console.log("hej"); 
       }  */
   
-
-   
-
-  
     function filtrering(){
      filterProjekt = this.dataset.projekt; //her gør vi det klart at der skal filtreres på det der er klikket på ved brug af 'this'
      console.log(filterProjekt); 
@@ -126,13 +119,14 @@ let trin = projekt.trin;
         projekter.forEach(projekt => {
             if (filterProjekt == "alle" || projekt.categories.includes(parseInt(filterProjekt))){
             let klon = temp.cloneNode(true).content;
-            
+            klon.querySelector(".projekt").classList.add(projekt.trin); 
+
             klon.querySelector(".pic").src = projekt.foto.guid; //vi har skrevet 'guid' til sidst, fordi vi i console kunne se at billedet hed det
             klon.querySelector("h3").textContent = projekt.title.rendered; //vi har skrevet 'rendered' til sidst, fordi vi i console kunne se at titlen hed det
             klon.querySelector(".trin").textContent = projekt.trin; 
             klon.querySelector(".korttekst").textContent = projekt.korttekst; 
             /* Herunder gør vi artiklerne klikbare, og sender videre til det enkelte projekts side, som vi har skabt inde i single-projekt */
-            klon.querySelector("#projekt").addEventListener("click", ()=> {location.href = projekt.link;})
+            klon.querySelector(".projekt").addEventListener("click", ()=> {location.href = projekt.link;})
 
           /*   Til slut herunder tilføjer vi alle vores kloninger til vores container  */
             container.appendChild(klon);}
@@ -144,9 +138,6 @@ let trin = projekt.trin;
 </script>
 
 
-
-
-
 <!-- Her starter styling til loop-view af projekter  -->
 
 <style>
@@ -156,6 +147,25 @@ let trin = projekt.trin;
   grid-gap: 8px;
 }
 
+.projekt.Ungdomsuddannelse{
+  background-color: #FCCB8E; 
+}
+
+.projekt.Ungdomsudannelse /* - denne her er magen til ovenstående, men fordi der var en stavefejl findes den i to */ {
+  background-color: #FCCB8E; 
+}
+
+.projekt.Indskoling {
+  background-color: #FFBB9B; 
+}
+
+.projekt.Mellemtrin {
+  background-color: #FDC30A; 
+}
+
+.projekt.Udskoling{
+  background-color: #F0B0CA; 
+}
 
 /* kategori-knappernes styling herunder:  */
 
@@ -165,6 +175,7 @@ let trin = projekt.trin;
   flex-wrap: wrap; 
  justify-content: center;   
   gap: 8px; 
+  padding-bottom: 10px; 
 }
 
 .filter /* - generelle indstillinger til ikonernes størrelse / style */{
@@ -173,8 +184,17 @@ let trin = projekt.trin;
   width: 150px; 
 }
 
+.projekt { 
+  margin:  8px;
+  padding: 8px; 
+}
+
+.trin {
+  text-decoration-line: underline; /* denne er lavet for at give klassetrinnet en streg under  */
+}
+
 .alle /* - generelle indstillinger til ALLE knappen / ikonet */{
-  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/alle.png); 
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/alle.webp); 
   background-size: cover; 
   border: 0; 
   height: 150px; 
@@ -192,120 +212,109 @@ let trin = projekt.trin;
 }
 
 /* Herunder er der indsat ikon for hver knap, samt fjerning af oprindelig tekst  */
-.filter.cat4 /* - afskaf fattigdom  */{
-  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal01.png); 
+.filter.cat4 /* - afskaf fattigdom 1  */{
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal-ikon-01.webp); 
   background-size: cover; 
   color: rgba(255, 255, 255, 0); 
 }
 
-.filter.cat19  /* - anstændige jobs og økonomisk vækst  */ {
- background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal02.png); 
- background-size: cover; 
- color: rgba(255, 255, 255, 0); 
+.filter.cat6 /* - Stop sult 2  */ {
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal02.webp); 
+  background-size: cover; 
+  color: rgba(255, 255, 255, 0); 
 }
 
-.filter.cat27  /* - ansvarligt forbrug og produktion  */ {
- background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal03.png); 
- background-size: cover; 
- color: rgba(255, 255, 255, 0); 
+.filter.cat8 /* - Sundhed og trivsel 3  */ {
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal03.webp); 
+  background-size: cover; 
+  color: rgba(255, 255, 255, 0); 
 }
 
-.filter.cat17  /* - bæredygtig energi  */ {
-  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal04.png); 
+.filter.cat11 /* - kvalitetsuddannelse 4  */ {
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal04.webp); 
+  background-size: cover; 
+  color: rgba(255, 255, 255, 0); 
+}
+
+.filter.cat13 /* - ligestilling mellem kønnene 5  */ {
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal05.webp); 
+  background-size: cover; 
+  color: rgba(255, 255, 255, 0); 
+}
+
+.filter.cat15 /* - Rent vand og sanitet 6  */ {
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal06.webp); 
+  background-size: cover; 
+  color: rgba(255, 255, 255, 0); 
+}
+
+.filter.cat17  /* - bæredygtig energi 7 */ {
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal07.webp); 
   background-size: cover;  
   color: rgba(255, 255, 255, 0); 
-
 }
 
-.filter.cat25 /* - bæredygtige byer og lokalsamfund  */ {
-  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal05.png); 
-  background-size: cover; 
-  color: rgba(255, 255, 255, 0); 
-
+.filter.cat19  /* - anstændige jobs og økonomisk vækst 8  */ {
+ background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal08.webp); 
+ background-size: cover; 
+ color: rgba(255, 255, 255, 0); 
 }
 
-.filter.cat36 /* - fred, retæfridghed og stærke institutioner  */ {
-  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal06.png); 
-  background-size: cover; 
-  color: rgba(255, 255, 255, 0); 
-
-}
-
-.filter.cat21  /* - industri innovation og infrastruktur  */ {
-  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal07.png); 
-  background-size: cover; 
-  color: rgba(255, 255, 255, 0); 
-
-
-}
-
-.filter.cat29  /* - klimaindsats  */ {
-  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal08.png); 
-  background-size: cover; 
-  color: rgba(255, 255, 255, 0); 
-
-
-}
-
-.filter.cat11 /* - kvalitetsuddannelse  */ {
-  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal09.png); 
-  background-size: cover; 
-  color: rgba(255, 255, 255, 0); 
-
-}
-
-.filter.cat13 /* - ligestilling mellem kønnene  */ {
-  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal10.png); 
+.filter.cat21  /* - industri innovation og infrastruktur 9  */ {
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal09.webp); 
   background-size: cover; 
   color: rgba(255, 255, 255, 0); 
 }
 
-.filter.cat31 /* - Livet i havet  */ {
-  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal11.png); 
+.filter.cat23 /* - Mindre ulighed 10 */ {
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal10.webp); 
   background-size: cover; 
   color: rgba(255, 255, 255, 0); 
 }
 
-.filter.cat34 /* - Livet på land  */ {
-  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal12.png); 
+.filter.cat25 /* - bæredygtige byer og lokalsamfund 11 */ {
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal11.webp); 
   background-size: cover; 
   color: rgba(255, 255, 255, 0); 
 }
 
-.filter.cat23 /* - Mindre ulighed  */ {
-  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal13.png); 
+.filter.cat27  /* - ansvarligt forbrug og produktion 12  */ {
+ background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal12.webp); 
+ background-size: cover; 
+ color: rgba(255, 255, 255, 0); 
+}
+
+.filter.cat29  /* - klimaindsats 13 */ {
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal13.webp); 
   background-size: cover; 
   color: rgba(255, 255, 255, 0); 
 }
 
-.filter.cat38 /* - Partnerskaber for handling  */ {
-  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal14.png); 
-  background-size: cover; 
-  color: rgba(255, 255, 255, 0); 
-
-}
-
-.filter.cat15 /* - Rent vand og sanitet  */ {
-  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal15.png); 
+.filter.cat31 /* - Livet i havet 14 */ {
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal14.webp); 
   background-size: cover; 
   color: rgba(255, 255, 255, 0); 
 }
 
-.filter.cat6 /* - Stop sult  */ {
-  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal16.png); 
+.filter.cat34 /* - Livet på land 15 */ {
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal15.webp); 
   background-size: cover; 
   color: rgba(255, 255, 255, 0); 
 }
 
-.filter.cat8 /* - Sundhed og trivsel  */ {
-  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal17.png); 
+.filter.cat36 /* - fred, retæfridghed og stærke institutioner 16 */ {
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal16.webp); 
   background-size: cover; 
   color: rgba(255, 255, 255, 0); 
 }
 
-article.pro100 {
-  background-color: green; 
+
+.filter.cat38 /* - Partnerskaber for handling 17 */ {
+  background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner_webp/Verdensmaal17.webp); 
+  background-size: cover; 
+  color: rgba(255, 255, 255, 0); 
 }
+
 
 </style>
 
