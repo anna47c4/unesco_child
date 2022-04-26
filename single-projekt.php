@@ -25,7 +25,7 @@ get_header(); ?>
         <h1></h1>
 		 <img class="pic" src="" alt="" />
         <p class="trin"></p>
-		<p class="korttekst"></p>
+		<p class="langtekst"></p>
         </article>
 	    </main>
     
@@ -49,7 +49,7 @@ get_header(); ?>
             document.querySelector("h1").textContent = projekt.title.rendered; //vi har skrevet 'rendered' til sidst, fordi vi i console kunne se at titlen hed det
             document.querySelector(".pic").src = projekt.foto.guid; //vi har skrevet 'guid' til sidst, fordi vi i console kunne se at billedet hed det
             document.querySelector(".trin").textContent = projekt.trin; 
-            document.querySelector(".korttekst").textContent = projekt.korttekst; 
+            document.querySelector(".langtekst").textContent = projekt.langtekst; 
         }
 
         hentData(); 

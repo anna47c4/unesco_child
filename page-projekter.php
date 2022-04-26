@@ -45,15 +45,13 @@ get_header(); ?>
     let categories; 
     let proId; // test 
     let filterProjekt = "alle"; //default værdi vi har givet så alle vises inden klik på specifik
+    let trin; 
 
     /* Herunder har vi lavet en konstant med navnet 'url', som repræsenterer vores link som i næste led bruges til at fetche dataerne ind */
     const url = "http://perfpics.dk/kea/2_sem/09_cms/unesco_wp/wp-json/wp/v2/projekt?per_page=100"; 
 
     /* Herunder har vi lavet en konstant med navnet 'url', som repræsenterer vores link som i næste led bruges til at fetche dataerne ind */
     const catUrl = "http://perfpics.dk/kea/2_sem/09_cms/unesco_wp/wp-json/wp/v2/categories?per_page=100"; 
-
-    //test 
-  /*   const idUrl = "http://perfpics.dk/kea/2_sem/09_cms/unesco_wp/wp-json/wp/v2/projekt/" */
     
     /* Herunder kører vi den funktion som henter vores data ind (både vores custom field data, og vores kategorier), for at tjekke at indhentingen fungerer, console logger vi og tjekker der, før vi fortsætter */
     async function hentData() {
@@ -71,7 +69,7 @@ get_header(); ?>
         /* Herunder kalder vi en ny funktion, nemlig den funktion vi bruger til at få oprettet vores filtreringsknapper */
         opretKnapper(); 
 
-         styleProjekter(); 
+        styleProjekter(); 
     }
     
    /*  I nedstående funktion sørger vi med 'forEach', og ved brug af ID for at der oprettes en knap for hver kategori der er lavet */
@@ -88,21 +86,28 @@ get_header(); ?>
         })
     }
 
-/*    //test herunder
+/*   //test herunder
     function styleProjekter() {
-     projekter.forEach(projekt => {
-      document.querySelector("#projekt").setAttribute('class', projekt.id) 
-     })
-    }  */
-/* 
-    function styleProjekter() {
-      document.querySelector("#projekt").forEach(elm => {
-        elm.setAttribute('class', projekt.id) 
-      })
-    } Lortet virker ikkeeeeee*/
+      if(trin == "Indskoling") {
+        console.log("indskoling"); 
+      }
+      else if(trin == "Mellemtrin"){
+        console.log("mellemtrin"); 
+      }
+      else{
+        console.log("virk nu!!!"); 
+      } SHIT SHIT SHIT LORTET VIRKER IKKEEEEEE
+    }   */
 
+/* 
+let trin = projekt.trin; 
+      if(trin == "indskoling"){
+        console.log("hej"); 
+      }  */
   
-  
+
+   
+
   
     function filtrering(){
      filterProjekt = this.dataset.projekt; //her gør vi det klart at der skal filtreres på det der er klikket på ved brug af 'this'
@@ -135,6 +140,10 @@ get_header(); ?>
 
     hentData(); //vores vigtige kald der sørger for at hente dataerne ind
 </script>
+
+
+
+
 
 <!-- Her starter styling til loop-view af projekter  -->
 
