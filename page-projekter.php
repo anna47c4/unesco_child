@@ -21,8 +21,9 @@ get_header(); ?>
 
  <template>
     <article id="projekt">
+      	 <img class="pic" src="" alt="" />
         <h3></h3>
-		 <img class="pic" src="" alt="" />
+	
         <p class="trin"></p>
 		<p class="korttekst"></p>
     </article>
@@ -125,8 +126,9 @@ let trin = projekt.trin;
         projekter.forEach(projekt => {
             if (filterProjekt == "alle" || projekt.categories.includes(parseInt(filterProjekt))){
             let klon = temp.cloneNode(true).content;
-            klon.querySelector("h3").textContent = projekt.title.rendered; //vi har skrevet 'rendered' til sidst, fordi vi i console kunne se at titlen hed det
+            
             klon.querySelector(".pic").src = projekt.foto.guid; //vi har skrevet 'guid' til sidst, fordi vi i console kunne se at billedet hed det
+            klon.querySelector("h3").textContent = projekt.title.rendered; //vi har skrevet 'rendered' til sidst, fordi vi i console kunne se at titlen hed det
             klon.querySelector(".trin").textContent = projekt.trin; 
             klon.querySelector(".korttekst").textContent = projekt.korttekst; 
             /* Herunder gør vi artiklerne klikbare, og sender videre til det enkelte projekts side, som vi har skabt inde i single-projekt */
