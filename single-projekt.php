@@ -19,17 +19,15 @@ get_header(); ?>
 
     <!-- Her har vi vores HTML-struktur, som vi plotter vores data ind i ved single-view  -->
 
-	<section id="primary" class="content-area"></section>
+	<section id="primary" class="content-area">
 		<main id="main" class="site-main">
 		<article class="projekt">
         <h1></h1>
-		 <img class="pic" src="" alt="" />
+		<img class="pic" src="" alt="foto" />
         <p class="trin"></p>
 		<p class="langtekst"></p>
         </article>
 	    </main>
-    
-    
     <!-- Her starter vi vores JS til at få vist projekterne i single-view  -->  
     <script>
         let projekt; //her laver vi en variabel for vores projekter i singularis, altså projekt, og dette fordi vi nu skal koncentrere os om hver enkelt, og ikke i flertal
@@ -54,6 +52,18 @@ get_header(); ?>
 
         hentData(); 
     </script>  
+    </section>
 
+    <style>
+    #content.site-content {
+    margin-top: 50px; 
+    margin-bottom: 100px; 
+    }
+
+
+    h1 {
+        padding-bottom: 10px; 
+    }
+    </style>
 
 <?php get_footer(); ?>

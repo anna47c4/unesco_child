@@ -35,6 +35,8 @@ get_header(); ?>
 <main id="main" class="site-main">
  <!-- Herunder opretter vi et nav-element som vi kan bruge til vores filtrering af projekterne   --> 
 <nav id="filtrering"><button class="alle" data-projekt="alle">Alle</button></nav>
+<!-- Herunder har vi oprettet en div hvor der kan være en upload-knap  -->
+<div class="upload"><button>Upload projekt</button></div>
 <!-- Her opretter vi en 'tom' section, som vi senere bruger til at klone vores indhold (data) ind i  -->
 <section class="data-container"></section>	
 
@@ -148,10 +150,26 @@ let trin = projekt.trin;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 8px;
 }
+
+#content.site-content {
+  margin-top: 50px; 
+  margin-bottom: 100px; 
+}
+
+.upload /* - upload knap inde i div  */{
+  display: flex; 
+  justify-content: center;
+  margin: 12px;
+  padding: 12px;
+  background-color: #E8E8E8; 
+}
+
 .læs /* - dette er en div der er rundt om 'læs mere' knappen på hvert projekt */ {
   display: flex; 
   justify-content: start; 
 }
+
+/* Nedestående er indstilling af baggrundsfarve til projekterne, alt efter deres trin  */
 .projekt.Ungdomsuddannelse{
   background-color: #FCCB8E; 
 }
