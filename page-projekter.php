@@ -24,7 +24,10 @@ get_header(); ?>
       	 <img class="pic" src="" alt="projekter" /> 
         <h3></h3>
         <p class="trin"></p>
-		<p class="korttekst"></p>
+		    <p class="korttekst"></p>
+        <div class="læs">
+        <button>Læs mere</button>
+        </div>
     </article>
  </template>
 
@@ -145,7 +148,10 @@ let trin = projekt.trin;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 8px;
 }
-
+.læs /* - dette er en div der er rundt om 'læs mere' knappen på hvert projekt */ {
+  display: flex; 
+  justify-content: start; 
+}
 .projekt.Ungdomsuddannelse{
   background-color: #FCCB8E; 
 }
@@ -159,11 +165,11 @@ let trin = projekt.trin;
 }
 
 .projekt.Mellemtrin {
-  background-color: #FDC30A; 
+  background-color: #ADD8E6; 
 }
 
 .projekt.Udskoling{
-  background-color: #F0B0CA; 
+  background-color: #DEEFF5; 
 }
 
 /* kategori-knappernes styling herunder:  */
@@ -186,6 +192,7 @@ let trin = projekt.trin;
 .projekt { 
   margin:  8px;
   padding: 8px; 
+  cursor: pointer; 
 }
 
 .trin {
@@ -205,13 +212,15 @@ let trin = projekt.trin;
 /* Hover indstillinger - gjort for at fjerne / skjule de oprindelige kategoritekster, så det kun er ikonet */
 .alle:hover {
   color: rgba(255, 255, 255, 0); 
+  filter: opacity(25%); 
 }
 
 .filter:hover {
   color: rgba(255, 255, 255, 0); 
+  filter: opacity(25%); 
 }
 
-/* Herunder er der indsat ikon for hver knap, samt fjerning af oprindelig tekst  */
+/* Herunder er der indsat ikon for hver knap, samt usynliggørelse af oprindelig tekst  */
 .filter.cat4 /* - afskaf fattigdom 1  */{
   background-image: url(http://perfpics.dk/kea/2_sem/09_cms/vm_ikoner/Verdensmaal01.png); 
   background-size: cover; 
