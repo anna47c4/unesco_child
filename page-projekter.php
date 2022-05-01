@@ -17,8 +17,11 @@
 
 
 get_header(); ?>
-<!-- Nedenfor her har vi lavet en skabelon (template), som vores data fra pods' skal klones ind i  -->
 
+<head>
+  <link rel="stylesheet" href="https://use.typekit.net/bgz8nxy.css">
+</head>
+<!-- Nedenfor her har vi lavet en skabelon (template), som vores data fra pods' skal klones ind i  -->
  <template>
     <article class="projekt">
       	 <img class="pic" src="" alt="projekter" /> 
@@ -45,10 +48,9 @@ get_header(); ?>
 <!-- Herunder starter vi JS koden, som skal hjælpe os med at hente dataerne ind  -->
 
 <script>
- /* Tag stilling til domcontentloaded !!!! derefter har vi oprettet variable, som vi skal bruge igennem koden  */ 
+ /* Her har vi oprettet variable, som vi skal bruge igennem koden  */ 
     let projekter; 
     let categories; 
-    let proId; // test 
     let filterProjekt = "alle"; //default værdi vi har givet så alle vises inden klik på specifik
     let trin; 
 
@@ -62,11 +64,10 @@ get_header(); ?>
     async function hentData() {
         const respons = await fetch(url);
         const catRespons = await fetch(catUrl); 
-       /*  const idRespons = await fetch(idUrl); BRUGT TIL AT TESTE NOGET  */
+  
 
         projekter = await respons.json(); 
         categories = await catRespons.json(); 
-       /*  proId = await idRespons.json(); BRUGT TIL AT TESTE NOGET */
         console.log(projekter); 
       /*   Herunder kalder vi den funktion som skal hjælpe os med at vise dataen på siden  */
         visData(); 
@@ -88,25 +89,6 @@ get_header(); ?>
             elm.addEventListener("click", filtrering) //efter der er klikket på en kategori, kalder vi funktionen filtrering
         })
     }
-
-/*   //test herunder
-    function styleProjekter() {
-      if(trin == "Indskoling") {
-        console.log("indskoling"); 
-      }
-      else if(trin == "Mellemtrin"){
-        console.log("mellemtrin"); 
-      }
-      else{
-        console.log("virk nu!!!"); 
-      } SHIT SHIT SHIT LORTET VIRKER IKKEEEEEE
-    }   */
-
-/* 
-let trin = projekt.trin; 
-      if(trin == "indskoling"){
-        console.log("hej"); 
-      }  */
   
     function filtrering(){
      filterProjekt = this.dataset.projekt; //her gør vi det klart at der skal filtreres på det der er klikket på ved brug af 'this'
@@ -161,12 +143,20 @@ let trin = projekt.trin;
   justify-content: center;
   margin: 12px;
   padding: 12px;
-  background-color: #E8E8E8; 
+  font-family: roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .læs /* - dette er en div der er rundt om 'læs mere' knappen på hvert projekt */ {
   display: flex; 
   justify-content: start; 
+}
+
+.læs button {
+font-family: roboto, sans-serif;
+font-style: normal;
+font-weight: 400;
 }
 
 /* Nedestående er indstilling af baggrundsfarve til projekterne, alt efter deres trin  */
@@ -341,7 +331,6 @@ let trin = projekt.trin;
   background-size: cover; 
   color: rgba(255, 255, 255, 0); 
 } 
-
 
 </style>
 

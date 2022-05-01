@@ -64,6 +64,11 @@ get_header(); ?>
     h1 {
         padding-bottom: 10px; 
     }
+
+    .trin {
+        font-weight: bold; 
+        text-decoration-line: underline; 
+    }
     </style>
 
 <?php get_footer(); ?>
