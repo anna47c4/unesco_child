@@ -45,7 +45,7 @@ get_header(); ?>
 <!-- Herunder starter vi JS koden, som skal hjælpe os med at hente dataerne ind  -->
 
 <script>
-  /*   Herunder har vi oprettet variable, som vi skal bruge igennem koden  */
+ /* Tag stilling til domcontentloaded !!!! derefter har vi oprettet variable, som vi skal bruge igennem koden  */ 
     let projekter; 
     let categories; 
     let proId; // test 
